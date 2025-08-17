@@ -1,0 +1,381 @@
+/* ===== Base ===== */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    color: #374151;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== Navbar (desktop) ===== */
+.navbar {
+    background-color: #f5f5f5;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.navbar::after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.avatar img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.name-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.my-name {
+    font-weight: 700;
+    color: #000;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+    letter-spacing: 0.5px;
+}
+
+.close-btn {
+    display: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    opacity: 0;
+    transform: rotate(0deg) scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1100;
+}
+
+/* ===== Mobile Sidebar ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #f5f5f5;
+        flex-direction: column;
+        padding-top: 3rem;
+        transition: left 0.4s ease;
+        border-right: 1px solid #ddd;
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .nav-links.active .close-btn {
+        opacity: 1;
+        transform: rotate(90deg) scale(1);
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1000;
+    }
+
+    .overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .nav-links.active li {
+        animation: slideIn 0.4s forwards;
+    }
+
+    .nav-links.active li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+}
+
+/* ===== Skills page ===== */
+.skills-section {
+    background-color: #f5f5f5;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.skills-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.skills-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.skills-intro {
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+}
+
+.skill-category {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.5rem;
+    color: #111;
+    text-align: left;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: #1f2937;
+    color: #fff;
+    padding: 2rem 1rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.skill-card p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 3rem 1rem;
+    }
+    .skill-category {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 2.5rem 0.8rem;
+    }
+    .skills-section h1 {
+        font-size: 1.8rem;
+    }
+    .skill-card {
+        padding: 1.5rem 1rem;
+    }
+    .skill-card img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ===== Footer ===== */
+.footer {
+    background-color: #f5f5f5;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #374151;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer h4 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.footer a {
+    text-decoration: none;
+    color: rgb(108, 0, 0);
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.footer a:hover {
+    color: #1d4ed8;
+    letter-spacing: 0.5px;
+}
+
+.footer .copyright {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer .copyright {
+        text-align: center;
+        margin-top: 1rem;
+    }
+}
