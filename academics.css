@@ -11,30 +11,6 @@
      overflow-x: hidden;
  }
 
-
- .about-college {
-     background: var(--white);
-     text-align: center;
-     padding: 3.5rem 1rem 2.5rem;
- }
-
- .about-college .container {
-     max-width: 900px;
-     margin: 0 auto;
-     text-align: start;
- }
-
- .about-college h1 {
-     font-size: 2.1rem;
-     margin-bottom: .75rem;
-     color: var(--heading-color);
- }
-
- .about-college p {
-     color: #444;
-     line-height: 1.7;
- }
-
  .parallax {
      width: 100%;
      min-height: 45vh;
