@@ -28,9 +28,9 @@ filterButtons.forEach(button => {
 
     projectCards.forEach(card => {
       if (filterValue === "all" || card.getAttribute('data-category') === filterValue) {
-        card.style.display = "block"; 
+        card.style.display = "flex";
       } else {
-        card.style.display = "none"; 
+        card.style.display = "none";
       }
     });
   });
